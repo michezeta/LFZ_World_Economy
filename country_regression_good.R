@@ -151,15 +151,18 @@ f8 <- as.formula(paste0(
 
 # (9) 2-year non-overlapping
 f9 <- as.formula(paste0(
-  "growth2 ~ D_nat_l1 + D_int_l1 + bwd_nat_l1 + bwd_int_l1 + ", ctrl_mfg, " | year"))
+  "growth2 ~ D_nat_l1 + D_int_l1 + Dnat_x_init + Dint_x_init + ",
+  "bwd_nat_l1 + bwd_int_l1 + ", ctrl_mfg, " | year + isocode"))
 
 # (10) 5-year non-overlapping
 f10 <- as.formula(paste0(
-  "growth5 ~ D_nat_l1 + D_int_l1 + bwd_nat_l1 + bwd_int_l1 + ", ctrl_mfg, " | year"))
+  "growth5 ~ D_nat_l1 + D_int_l1 + Dnat_x_init + Dint_x_init + ",
+  "bwd_nat_l1 + bwd_int_l1 + ", ctrl_mfg, " | year + isocode"))
 
 # (11) 10-year non-overlapping
 f11 <- as.formula(paste0(
-  "growth10 ~ D_nat_l1 + D_int_l1 + bwd_nat_l1 + bwd_int_l1 + ", ctrl_mfg, " | year"))
+  "growth10 ~ D_nat_l1 + D_int_l1 + Dnat_x_init + Dint_x_init + ",
+  "bwd_nat_l1 + bwd_int_l1 + ", ctrl_mfg, " | year + isocode"))
 
 m1  <- feols(f1,  data = df,   cluster = ~isocode)
 m2  <- feols(f2,  data = df,   cluster = ~isocode)
@@ -216,15 +219,18 @@ g8 <- as.formula(paste0(
 
 # (9) 2-year non-overlapping
 g9 <- as.formula(paste0(
-  "growth2 ~ U_nat_l1 + U_int_l1 + fwd_nat_l1 + fwd_int_l1 + ", ctrl_mfg, " | year"))
+  "growth2 ~ U_nat_l1 + U_int_l1 + Unat_x_init + Uint_x_init + ",
+  "fwd_nat_l1 + fwd_int_l1 + ", ctrl_mfg, " | year + isocode"))
 
 # (10) 5-year non-overlapping
 g10 <- as.formula(paste0(
-  "growth5 ~ U_nat_l1 + U_int_l1 + fwd_nat_l1 + fwd_int_l1 + ", ctrl_mfg, " | year"))
+  "growth5 ~ U_nat_l1 + U_int_l1 + Unat_x_init + Uint_x_init + ",
+  "fwd_nat_l1 + fwd_int_l1 +  ", ctrl_mfg, " | year + isocode"))
 
 # (11) 10-year non-overlapping
 g11 <- as.formula(paste0(
-  "growth10 ~ U_nat_l1 + U_int_l1 + fwd_nat_l1 + fwd_int_l1 + ", ctrl_mfg, " | year"))
+  "growth10 ~ U_nat_l1 + U_int_l1 + Unat_x_init + Uint_x_init + ",
+  "fwd_nat_l1 + fwd_int_l1 + ", ctrl_mfg, " | year"))
 
 n1  <- feols(g1,  data = df,   cluster = ~isocode)
 n2  <- feols(g2,  data = df,   cluster = ~isocode)
